@@ -1,0 +1,36 @@
+/* Section and list styles */
+section {
+  background: #393b53;
+  border-radius: 8px;
+  padding: 20px;
+  width: 30%;
+  min-width: 200px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-actions button {
+  margin-left: 5px;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 10px;
+  background: #eebbc3;
+  color: #232946;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.2s;
+}
+
+.movie-actions button:hover {
+  background: #ffd6e0;
+}

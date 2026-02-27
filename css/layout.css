@@ -1,0 +1,29 @@
+/* Layout styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #aeb2c9 0%, #eebbc3 33%, #232946 66%, #b8c1ec 100%);
+  color: #fff;
+  margin: 10px;
+  padding: 0;
+}
+
+header {
+  background: #901dbd;
+  padding: 24px 0 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+}
+
+footer {
+  background: #901dbd;
+  color: #eebbc3;
+  text-align: center;
+  padding: 16px 0 12px;
+  position: fixed;
+  width: calc(100% - 20px);
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  font-size: 1em;
+  box-shadow: 0 -2px 8px rgb(0 0 0 / 5%);
+}

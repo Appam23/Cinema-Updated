@@ -1,0 +1,75 @@
+/* Modal styles for login/signup */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #9ae769 0%, #eebbc3 33%, #232946 66%, #c955cb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+body.modal-open > *:not(.modal) {
+  filter: blur(8px) grayscale(1) opacity(0.2);
+  pointer-events: none;
+  user-select: none;
+}
+
+.modal-content {
+  background: #3aafc9;
+  color: #232946;
+  padding: 32px 28px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgb(139 159 89 / 18%);
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: #121629;
+}
+
+#auth-form input {
+  display: block;
+  width: 90%;
+  margin: 12px auto;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #eee;
+  border-radius: 6px;
+    
+}
+
+.auth-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 8px;
+}
+
+.auth-actions button {
+  padding: 8px 22px;
+  font-size: 1em;
+  background: #eebbc3;
+  color: #232946;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.auth-actions button:hover {
+  background: #ffd6e0;
+}
+
+#auth-message {
+  color: #d7263d;
+  min-height: 20px;
+  margin: 0;
+}

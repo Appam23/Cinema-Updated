@@ -1,0 +1,33 @@
+/* Genre dropdown styles */
+.genre-select {
+  display: flex;
+  align-items: center;
+  margin-right: 18px;
+  font-size: 1em;
+}
+
+.genre-select label {
+  margin-right: 8px;
+  color: #fff;
+}
+
+.genre-select select {
+  padding: 7px 12px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  font-size: 1em;
+  background: #393b53;
+  color: #fff;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.genre-select select:focus {
+  border: 1.5px solid #eebbc3;
+}
+
+.genre-center {
+  max-width: 900px;
+  margin: 24px 0 0;
+  text-align: left;
+}
