@@ -1,13 +1,5 @@
 // watchlist.js - Render watchlist movies from localStorage or fallback
-
-function getWatchlist() {
-  // Try to get from localStorage, fallback to empty array
-  try {
-    return JSON.parse(localStorage.getItem('cinema_watchlist')) || [];
-  } catch {
-    return [];
-  }
-}
+import { getWatchlist } from "./shared.js";
 
 function renderWatchlistPage() {
   const watchlist = getWatchlist();

@@ -1,13 +1,5 @@
 // favorites.js - Render favorite movies from localStorage or fallback
-
-function getFavorites() {
-  // Try to get from localStorage, fallback to empty array
-  try {
-    return JSON.parse(localStorage.getItem('cinema_favorites')) || [];
-  } catch {
-    return [];
-  }
-}
+import { getFavorites } from "./shared.js";
 
 function renderFavoritesPage() {
   const favorites = getFavorites();

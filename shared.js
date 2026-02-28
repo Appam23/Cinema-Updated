@@ -37,3 +37,19 @@ export function renderMovies(movies) {
     movieList.appendChild(li);
   });
 }
+
+export function getFavorites() {
+  try {
+    return JSON.parse(localStorage.getItem('cinema_favorites')) || [];
+  } catch {
+    return [];
+  }
+}
+
+export function getWatchlist() {
+  try {
+    return JSON.parse(localStorage.getItem('cinema_watchlist')) || [];
+  } catch {
+    return [];
+  }
+}
