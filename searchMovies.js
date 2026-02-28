@@ -6,7 +6,7 @@ async function searchMovies(query) {
     renderMovies([]);
     return;
   }
-  const resp = await fetch(`http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query.trim())}`);
+  const resp = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query.trim())}`);
   const data = await resp.json();
   if (data.Search) {
     currentResults = data.Search;
