@@ -10,6 +10,15 @@ export function renderMovies(movies) {
     movieList.innerHTML = '<li>No movies found.</li>';
     return;
   }
+  // Get current favorites and watchlist from localStorage
+  let favorites = [];
+  let watchlist = [];
+  try {
+    favorites = JSON.parse(localStorage.getItem('cinema_favorites')) || [];
+  } catch {}
+  try {
+    watchlist = JSON.parse(localStorage.getItem('cinema_watchlist')) || [];
+  } catch {}
   movies.forEach(movie => {
     const li = document.createElement('li');
     li.style.display = 'flex';
@@ -32,7 +41,44 @@ export function renderMovies(movies) {
     const actions = document.createElement('span');
     actions.className = 'movie-actions';
 
-    // Buttons will be added in app.js for favorites/watchlist
+    // Add Favorite button
+    const favBtn = document.createElement('button');
+    favBtn.textContent = favorites.some(m => m.imdbID === movie.imdbID) ? 'Remove Favorite' : 'Add Favorite';
+    favBtn.onclick = () => {
+      // Get latest favorites
+      let favs = [];
+      try { favs = JSON.parse(localStorage.getItem('cinema_favorites')) || []; } catch {}
+      const exists = favs.some(m => m.imdbID === movie.imdbID);
+      let updated;
+      if (exists) {
+        updated = favs.filter(m => m.imdbID !== movie.imdbID);
+      } else {
+        updated = [...favs, movie];
+      }
+      localStorage.setItem('cinema_favorites', JSON.stringify(updated));
+      renderMovies(movies);
+    };
+    actions.appendChild(favBtn);
+
+    // Add Watchlist button
+    const wlBtn = document.createElement('button');
+    wlBtn.textContent = watchlist.some(m => m.imdbID === movie.imdbID) ? 'Remove Watchlist' : 'Add Watchlist';
+    wlBtn.onclick = () => {
+      // Get latest watchlist
+      let wlist = [];
+      try { wlist = JSON.parse(localStorage.getItem('cinema_watchlist')) || []; } catch {}
+      const exists = wlist.some(m => m.imdbID === movie.imdbID);
+      let updated;
+      if (exists) {
+        updated = wlist.filter(m => m.imdbID !== movie.imdbID);
+      } else {
+        updated = [...wlist, movie];
+      }
+      localStorage.setItem('cinema_watchlist', JSON.stringify(updated));
+      renderMovies(movies);
+    };
+    actions.appendChild(wlBtn);
+
     li.appendChild(actions);
     movieList.appendChild(li);
   });
