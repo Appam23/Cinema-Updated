@@ -65,6 +65,36 @@ export function renderMovieList(listElement, movies, emptyMessage = 'No movies f
   });
 }
 
+// Toggle favorite movie in the favorites array and localStorage
+export function toggleFavorite(movie, favorites, setFavorites, renderLists, renderMovies, currentResults) {
+  const exists = favorites.some(m => m.imdbID === movie.imdbID);
+  let updatedFavorites;
+  if (exists) {
+    updatedFavorites = favorites.filter(m => m.imdbID !== movie.imdbID);
+  } else {
+    updatedFavorites = [...favorites, movie];
+  }
+  localStorage.setItem('cinema_favorites', JSON.stringify(updatedFavorites));
+  setFavorites(updatedFavorites);
+  renderLists();
+  renderMovies(currentResults);
+}
+
+// Toggle watchlist movie in the watchlist array and localStorage
+export function toggleWatchlist(movie, watchlist, setWatchlist, renderLists, renderMovies, currentResults) {
+  const exists = watchlist.some(m => m.imdbID === movie.imdbID);
+  let updatedWatchlist;
+  if (exists) {
+    updatedWatchlist = watchlist.filter(m => m.imdbID !== movie.imdbID);
+  } else {
+    updatedWatchlist = [...watchlist, movie];
+  }
+  localStorage.setItem('cinema_watchlist', JSON.stringify(updatedWatchlist));
+  setWatchlist(updatedWatchlist);
+  renderLists();
+  renderMovies(currentResults);
+}
+
 export function getFavorites() {
   try {
     return JSON.parse(localStorage.getItem('cinema_favorites')) || [];

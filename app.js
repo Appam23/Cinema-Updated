@@ -1,4 +1,4 @@
-import { OMDB_API_KEY, renderMovies } from "./shared.js";
+import { OMDB_API_KEY, renderMovies, toggleFavorite, toggleWatchlist } from "./shared.js";
 let favorites = [];
 let watchlist = [];
 
@@ -12,7 +12,7 @@ function renderLists() {
       li.textContent = `${movie.Title} (${movie.Year})`;
       const btn = document.createElement('button');
       btn.textContent = 'Remove';
-      btn.onclick = () => toggleFavorite(movie);
+      btn.onclick = () => toggleFavorite(movie, favorites, setFavorites, renderLists, renderMovies, currentResults);
       li.appendChild(btn);
       favoritesList.appendChild(li);
     });
@@ -27,39 +27,21 @@ function renderLists() {
       li.textContent = `${movie.Title} (${movie.Year})`;
       const btn = document.createElement('button');
       btn.textContent = 'Remove';
-      btn.onclick = () => toggleWatchlist(movie);
+      btn.onclick = () => toggleWatchlist(movie, watchlist, setWatchlist, renderLists, renderMovies, currentResults);
       li.appendChild(btn);
       watchlistList.appendChild(li);
     });
   }
 }
 
-// Removed renderMovies function as it is now imported from shared.js
+// Removed toggleFavorite and toggleWatchlist functions as they are now imported from shared.js
 
-function toggleFavorite(movie) {
-  const exists = favorites.some(m => m.imdbID === movie.imdbID);
-  if (exists) {
-    favorites = favorites.filter(m => m.imdbID !== movie.imdbID);
-  } else {
-    favorites.push(movie);
-  }
-  // Save to localStorage
-  localStorage.setItem('cinema_favorites', JSON.stringify(favorites));
-  renderLists();
-  renderMovies(currentResults);
+function setFavorites(newFavorites) {
+  favorites = newFavorites;
 }
 
-function toggleWatchlist(movie) {
-  const exists = watchlist.some(m => m.imdbID === movie.imdbID);
-  if (exists) {
-    watchlist = watchlist.filter(m => m.imdbID !== movie.imdbID);
-  } else {
-    watchlist.push(movie);
-  }
-  // Save to localStorage
-  localStorage.setItem('cinema_watchlist', JSON.stringify(watchlist));
-  renderLists();
-  renderMovies(currentResults);
+function setWatchlist(newWatchlist) {
+  watchlist = newWatchlist;
 }
 
 
