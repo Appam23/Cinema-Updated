@@ -11,7 +11,7 @@
 @import url("css/favorites.css");
 
 body {background: linear-gradient(135deg,
-     #34c41a 10%, #eebbc3 33%, #232946 66%, #5d23c7 100%);}
+     #34c41a 5%, #eebbc3 33%, #232946 66%, #5d23c7 100%);}
 
 /* Mobile-friendly responsive styles */
 @media (width <= 600px) {
