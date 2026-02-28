@@ -65,6 +65,16 @@ export function renderMovieList(listElement, movies, emptyMessage = 'No movies f
   });
 }
 
+// Fetch movie details from OMDb API for a list of titles
+export async function fetchAllMovieDetails(titles, apiKey = OMDB_API_KEY) {
+  const promises = titles.map(async title => {
+    const resp = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(title)}`);
+    const data = await resp.json();
+    return data && data.Response !== "False" ? data : null;
+  });
+  return (await Promise.all(promises)).filter(Boolean);
+}
+
 // Modal utility functions
 export function showModal(modal) {
   if (modal) {

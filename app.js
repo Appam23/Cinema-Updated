@@ -98,16 +98,9 @@ const availableMovieTitles = [
     ,"Pat Garrett & Billy the Kid"
 ];
 
-let allFetchedMovies = [];
+import { fetchAllMovieDetails } from "./shared.js";
 
-async function fetchAllMovieDetails(titles) {
-  const promises = titles.map(async title => {
-    const resp = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${encodeURIComponent(title)}`);
-    const data = await resp.json();
-    return data && data.Response !== "False" ? data : null;
-  });
-  return (await Promise.all(promises)).filter(Boolean);
-}
+let allFetchedMovies = [];
 
 async function renderAllMoviesFromAPI(genre = "") {
   if (allFetchedMovies.length === 0) {
