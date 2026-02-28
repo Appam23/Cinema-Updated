@@ -1,5 +1,6 @@
 // searchMovies.js - Handles searching movies from OMDb API and rendering results
 
+import { OMDB_API_KEY, renderMovies } from "./shared.js";
 
 async function searchMovies(query) {
   if (!query.trim()) {

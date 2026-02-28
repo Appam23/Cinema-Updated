@@ -1,4 +1,4 @@
-const OMDB_API_KEY = "e13f2aee";
+import { OMDB_API_KEY, renderMovies } from "./shared.js";
 let favorites = [];
 let watchlist = [];
 
@@ -34,50 +34,7 @@ function renderLists() {
   }
 }
 
-function renderMovies(movies) {
-  const movieList = document.getElementById('movie-list');
-  if (!movieList) return;
-  movieList.innerHTML = '';
-  if (!movies || movies.length === 0) {
-    movieList.innerHTML = '<li>No movies found.</li>';
-    return;
-  }
-  movies.forEach(movie => {
-    const li = document.createElement('li');
-    li.style.display = 'flex';
-    li.style.alignItems = 'center';
-    li.style.gap = '14px';
-
-    const img = document.createElement('img');
-    img.src = movie.Poster && movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/50x75?text=No+Image';
-    img.alt = movie.Title;
-    img.style.width = '50px';
-    img.style.height = '75px';
-    img.style.objectFit = 'cover';
-    img.style.borderRadius = '4px';
-    li.appendChild(img);
-
-    const info = document.createElement('span');
-    info.textContent = `${movie.Title} (${movie.Year})`;
-    li.appendChild(info);
-
-    const actions = document.createElement('span');
-    actions.className = 'movie-actions';
-
-    const favBtn = document.createElement('button');
-    favBtn.textContent = favorites.some(m => m.imdbID === movie.imdbID) ? 'Remove Favorite' : 'Add Favorite';
-    favBtn.onclick = () => toggleFavorite(movie);
-    actions.appendChild(favBtn);
-
-    const wlBtn = document.createElement('button');
-    wlBtn.textContent = watchlist.some(m => m.imdbID === movie.imdbID) ? 'Remove Watchlist' : 'Add Watchlist';
-    wlBtn.onclick = () => toggleWatchlist(movie);
-    actions.appendChild(wlBtn);
-
-    li.appendChild(actions);
-    movieList.appendChild(li);
-  });
-}
+// Removed renderMovies function as it is now imported from shared.js
 
 function toggleFavorite(movie) {
   const exists = favorites.some(m => m.imdbID === movie.imdbID);
