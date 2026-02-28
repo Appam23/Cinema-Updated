@@ -118,32 +118,7 @@ async function renderAllMoviesFromAPI(genre = "") {
 }
 
 
-function renderAllMovies(movies) {
-  const grid = document.getElementById('all-movies-grid');
-  if (!grid) return;
-  grid.innerHTML = '';
-  if (!movies || movies.length === 0) {
-    grid.innerHTML = '<p>No movies available.</p>';
-    return;
-  }
-  movies.forEach(movie => {
-    const card = document.createElement('div');
-    card.className = 'movie-card';
-    const img = document.createElement('img');
-    img.src = movie.Poster !== 'N/A' ? movie.Poster : 'https://via.placeholder.com/140x210?text=No+Image';
-    img.alt = movie.Title;
-    card.appendChild(img);
-    const title = document.createElement('div');
-    title.className = 'movie-card-title';
-    title.textContent = movie.Title;
-    card.appendChild(title);
-    const year = document.createElement('div');
-    year.className = 'movie-card-year';
-    year.textContent = movie.Year;
-    card.appendChild(year);
-    grid.appendChild(card);
-  });
-}
+import { renderAllMovies } from "./shared.js";
 
 
 
