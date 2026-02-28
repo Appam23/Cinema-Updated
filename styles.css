@@ -10,3 +10,63 @@
 @import url("css/watchlist.css");
 @import url("css/favorites.css");
 
+body {background: linear-gradient(135deg,
+     #34c41a 10%, #eebbc3 33%, #232946 66%, #5d23c7 100%);}
+
+/* Mobile-friendly responsive styles */
+@media (width <= 600px) {
+	html {
+		font-size: 15px;
+	}
+
+	body {
+		font-size: 1em;
+		padding: 0;
+		margin: 0;
+	}
+
+	.header-content {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.logo {
+		width: 60px;
+		height: auto;
+		margin-bottom: 8px;
+	}
+
+	.main-nav, .genre-select {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 8px;
+		padding: 0 8px;
+	}
+
+	.nav-link {
+		display: block;
+		width: 100%;
+		text-align: center;
+		padding: 10px 0;
+		font-size: 1.1em;
+	}
+
+	.all-movies-section h2 {
+		font-size: 1.2em;
+	}
+
+	#all-movies-grid {
+		grid-template-columns: 1fr !important;
+		gap: 12px;
+		padding: 0 8px;
+	}
+
+	.modal-content {
+		min-width: unset;
+		width: 95vw;
+		padding: 18px 8px 14px;
+	}
+}
+
+

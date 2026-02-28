@@ -1,4 +1,4 @@
-const OMDB_API_KEY = "bd58c5fe";
+const OMDB_API_KEY = "e13f2aee";
 let favorites = [];
 let watchlist = [];
 
@@ -135,6 +135,28 @@ const availableMovieTitles = [
   "Frozen",
   "Shrek",
   "Finding Nemo"
+    // More Horror movies
+    ,"Rosemary's Baby"
+    ,"The Babadook"
+    ,"Paranormal Activity"
+    ,"The Blair Witch Project"
+    ,"Poltergeist"
+    ,"The Texas Chain Saw Massacre"
+    ,"Carrie"
+    ,"Insidious"
+    ,"The Grudge"
+    ,"Midsommar"
+    // More Western movies
+    ,"Shane"
+    ,"Rio Bravo"
+    ,"The Searchers"
+    ,"3:10 to Yuma"
+    ,"The Outlaw Josey Wales"
+    ,"Red River"
+    ,"Winchester '73"
+    ,"The Man Who Shot Liberty Valance"
+    ,"My Darling Clementine"
+    ,"Pat Garrett & Billy the Kid"
 ];
 
 let allFetchedMovies = [];

@@ -1,15 +1,16 @@
-Modal styles for login/signup
+/* Modal styles for login/signup */
+
+ 
 #auth-modal {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #9ae769 0%, #eebbc3 33%, #232946 66%, #c955cb 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  margin: auto;
+  z-index: 1001;
 }
 
 body.modal-open > *:not(.modal) {
@@ -19,7 +20,7 @@ body.modal-open > *:not(.modal) {
 }
 
 .modal-content {
-  background: #3aafc9;
+  background: #cd2aac;
   color: #232946;
   padding: 32px 28px 24px;
   border-radius: 12px;
