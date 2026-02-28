@@ -93,6 +93,24 @@ export function renderAllMovies(movies) {
   });
 }
 
+// Search movies from OMDb API by query string
+export async function searchMovies(query, renderMovies, OMDB_API_KEY, setCurrentResults) {
+  if (!query.trim()) {
+    renderMovies([]);
+    if (setCurrentResults) setCurrentResults([]);
+    return;
+  }
+  const resp = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query.trim())}`);
+  const data = await resp.json();
+  if (data.Search) {
+    if (setCurrentResults) setCurrentResults(data.Search);
+    renderMovies(data.Search);
+  } else {
+    if (setCurrentResults) setCurrentResults([]);
+    renderMovies([]);
+  }
+}
+
 // Fetch movie details from OMDb API for a list of titles
 export async function fetchAllMovieDetails(titles, apiKey = OMDB_API_KEY) {
   const promises = titles.map(async title => {
