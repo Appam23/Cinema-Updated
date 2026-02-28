@@ -1,8 +1,7 @@
 Modal styles for login/signup
-.modal {
+#auth-modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   background: linear-gradient(135deg, #9ae769 0%, #eebbc3 33%, #232946 66%, #c955cb 100%);
@@ -10,6 +9,7 @@ Modal styles for login/signup
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  margin: auto;
 }
 
 body.modal-open > *:not(.modal) {
