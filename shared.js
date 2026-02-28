@@ -65,6 +65,22 @@ export function renderMovieList(listElement, movies, emptyMessage = 'No movies f
   });
 }
 
+// Modal utility functions
+export function showModal(modal) {
+  if (modal) {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
+  }
+}
+export function hideModal(modal) {
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
+  }
+}
+
 // Toggle favorite movie in the favorites array and localStorage
 export function toggleFavorite(movie, favorites, setFavorites, renderLists, renderMovies, currentResults) {
   const exists = favorites.some(m => m.imdbID === movie.imdbID);
