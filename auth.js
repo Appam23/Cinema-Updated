@@ -1,4 +1,5 @@
 // auth.js - Handles login/signup modal logic
+import { showModal, hideModal } from "./shared.js";
 
 // Simple modal logic for login/signup with persistent login state
 const modal = document.getElementById('auth-modal');
@@ -7,26 +8,13 @@ const loginBtn = document.getElementById('login-btn');
 const message = document.getElementById('auth-message');
 let isSignup = false;
 
-function showModal() {
-  if (modal) {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    document.body.classList.add('modal-open');
-  }
-}
-function hideModal() {
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-    document.body.classList.remove('modal-open');
-  }
-}
+// showModal and hideModal are now imported from shared.js
 
 // Check login state on load
 if (localStorage.getItem('cinema_logged_in') === 'true') {
-  hideModal();
+  hideModal(modal);
 } else {
-  showModal();
+  showModal(modal);
 }
 
 // Logout button logic
@@ -37,7 +25,7 @@ function setupLogoutButton() {
     if (logoutBtn) {
       logoutBtn.onclick = function() {
         localStorage.removeItem('cinema_logged_in');
-        showModal();
+        showModal(modal);
       };
     }
   } catch (e) {
@@ -61,7 +49,7 @@ if (form) {
     const pass = document.getElementById('password').value.trim();
     if (user && pass) {
       localStorage.setItem('cinema_logged_in', 'true');
-      hideModal();
+      hideModal(modal);
     } else {
       message.textContent = 'Please enter username and password.';
     }

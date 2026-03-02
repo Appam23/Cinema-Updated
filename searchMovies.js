@@ -1,20 +1,14 @@
 // searchMovies.js - Handles searching movies from OMDb API and rendering results
+import { OMDB_API_KEY, renderMovies, searchMovies as sharedSearchMovies } from "./shared.js";
 
+let currentResults = [];
+function setCurrentResults(results) {
+  currentResults = results;
+}
 
-async function searchMovies(query) {
-  if (!query.trim()) {
-    renderMovies([]);
-    return;
-  }
-  const resp = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query.trim())}`);
-  const data = await resp.json();
-  if (data.Search) {
-    currentResults = data.Search;
-    renderMovies(data.Search);
-  } else {
-    currentResults = [];
-    renderMovies([]);
-  }
+// Use the shared searchMovies function
+function searchMovies(query) {
+  sharedSearchMovies(query, renderMovies, OMDB_API_KEY, setCurrentResults);
 }
 
 
