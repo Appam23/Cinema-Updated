@@ -9,6 +9,7 @@
 @import url("css/search-list.css");
 @import url("css/watchlist.css");
 @import url("css/favorites.css");
+@import url("css/mobile.css");
 
 body {background: linear-gradient(135deg,
      #34c41a 5%, #eebbc3 33%, #232946 66%, #5d23c7 100%);}
