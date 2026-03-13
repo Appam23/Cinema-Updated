@@ -46,9 +46,9 @@
   padding:10px 32px;
   font-size:1.1em;
   background:#445ee1;
-  color:#eebbc3;
-  border:none;
+  color:#efecec;
   border-radius:6px;
+  border: 2px solid #eee;
   cursor:pointer;
   font-weight:bold;
   align-self: flex-start;
@@ -65,8 +65,9 @@
 section {
   background: #393b53;
   border-radius: 8px;
+  border: 2px solid #eee;
   padding: 20px;
-  width: 30%;
+  width: 80%;
   min-width: 200px;
 }
 
