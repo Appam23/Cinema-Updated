@@ -11,8 +11,10 @@
 @import url("css/favorites.css");
 @import url("css/mobile.css");
 
-body {background: linear-gradient(135deg,
-     #34c41a 5%, #eebbc3 33%, #232946 66%, #5d23c7 100%);}
+body {
+	background: linear-gradient(135deg, #34c41a 5%, #eebbc3 33%, #232946 66%, #5d23c7 100%);
+	margin: 0;
+}
 
 /* Mobile-friendly responsive styles */
 @media (width <= 600px) {

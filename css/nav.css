@@ -7,10 +7,11 @@
 }
 
 .nav-link {
-  color: #eebbc3;
+  color: #f8f8f8;
   background: #232946;
   padding: 8px 22px;
   border-radius: 6px;
+   border: 1px solid #eee;
   text-decoration: none;
   font-size: 1.1em;
   font-weight: bold;
