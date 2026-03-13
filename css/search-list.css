@@ -97,3 +97,14 @@ li {
 .movie-actions button:hover {
   background: #ffd6e0;
 }
+
+@media (max-width: 600px) {
+  
+  section {
+    width: 70%;
+  }
+  .back-link{
+    margin: 20px 0;
+    align-self: center;
+  }
+}
