@@ -53,6 +53,7 @@
   font-weight:bold;
   align-self: flex-start;
   margin-right: auto;
+  margin: 20px 0 60px 60px;
 
 }
 
@@ -69,6 +70,7 @@ section {
   padding: 20px;
   width: 80%;
   min-width: 200px;
+  margin: 60px 0;
 }
 
 ul {
@@ -81,6 +83,14 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+li img{
+  width: 100px !important;
+  height: 150px !important;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #fff;
 }
 
 .movie-actions button {
@@ -103,7 +113,7 @@ li {
   
   section {
     width: 70%;
-    margin: 40px 0;
+    margin: 40px 20px;
   }
 
   .search-bar input {
