@@ -14,8 +14,13 @@
 
 .all-movies-section h2 {
   text-align: center;
-  color: #120629;
+  color: #f4f4f4;
   margin-bottom: 24px;
+  background: #393b53;
+  border: 1px solid #eebbc3;
+  padding: 16px 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 }
 
 #all-movies-grid {
@@ -29,6 +34,7 @@
 .movie-card {
   background: #232946;
   border-radius: 8px;
+  border: 1px solid #eebbc3;
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
   padding: 12px 8px 16px;
   text-align: center;
