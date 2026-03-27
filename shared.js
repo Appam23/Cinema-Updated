@@ -2,6 +2,41 @@
 
 export const OMDB_API_KEY = "e13f2aee";
 
+function createMovieActions(movie, renderCallBack) {
+  const actions = document.createElement('span');
+  actions.className = 'movie-actions';
+
+  // Add Favorite button
+  const favorites = getFavorites();
+  const isFav = favorites.some(m => m.imdbID === movie.imdbID);
+  const favBtn = document.createElement('button');
+  favBtn.textContent = isFav ? '❤️' : '🤍';
+  favBtn.onclick = (e) => {
+    e.stopPropagation();
+    const favs = getFavorites();
+    const exists = favs.some(m => m.imdbID === movie.imdbID);
+    const updated = isFav ? favs.filter(m => m.imdbID !== movie.imdbID) : [...favs, movie];
+    localStorage.setItem('cinema_favorites', JSON.stringify(updated));
+    renderCallBack();
+  };
+
+  const watchlist = getWatchlist();
+  const isWl = watchlist.some(m => m.imdbID === movie.imdbID);
+  const wlBtn = document.createElement('button');
+  wlBtn.textContent = isWl ? '✅' : '+';
+  wlBtn.onclick = (e) => {
+    e.stopPropagation();
+    const wlist = getWatchlist();
+    const updated = isWl ? wlist.filter(m => m.imdbID !== movie.imdbID) : [...wlist, movie];
+    localStorage.setItem('cinema_watchlist', JSON.stringify(updated));
+    renderCallBack();
+  };
+
+  actions.appendChild(favBtn);
+  actions.appendChild(wlBtn);
+  return actions;
+}
+
 export function renderMovies(movies) {
   const movieList = document.getElementById('movie-list');
   if (!movieList) return;
@@ -11,14 +46,14 @@ export function renderMovies(movies) {
     return;
   }
   // Get current favorites and watchlist from localStorage
-  let favorites = [];
-  let watchlist = [];
-  try {
-    favorites = JSON.parse(localStorage.getItem('cinema_favorites')) || [];
-  } catch {}
-  try {
-    watchlist = JSON.parse(localStorage.getItem('cinema_watchlist')) || [];
-  } catch {}
+  // let favorites = [];
+  // let watchlist = [];
+  // try {
+  //   favorites = JSON.parse(localStorage.getItem('cinema_favorites')) || [];
+  // } catch {}
+  // try {
+  //   watchlist = JSON.parse(localStorage.getItem('cinema_watchlist')) || [];
+  // } catch {}
   movies.forEach(movie => {
     const li = document.createElement('li');
     li.style.display = 'flex';
@@ -38,49 +73,52 @@ export function renderMovies(movies) {
     info.textContent = `${movie.Title} (${movie.Year})`;
     li.appendChild(info);
 
-    const actions = document.createElement('span');
-    actions.className = 'movie-actions';
+    li.appendChild(createMovieActions(movie, () => renderMovies(movies)));
+    movieList.appendChild(li);
+
+    // const actions = document.createElement('span');
+    // actions.className = 'movie-actions';
 
     // Add Favorite button
-    const favBtn = document.createElement('button');
-    favBtn.textContent = favorites.some(m => m.imdbID === movie.imdbID) ? 'Remove Favorite' : 'Add Favorite';
-    favBtn.onclick = () => {
-      // Get latest favorites
-      let favs = [];
-      try { favs = JSON.parse(localStorage.getItem('cinema_favorites')) || []; } catch {}
-      const exists = favs.some(m => m.imdbID === movie.imdbID);
-      let updated;
-      if (exists) {
-        updated = favs.filter(m => m.imdbID !== movie.imdbID);
-      } else {
-        updated = [...favs, movie];
-      }
-      localStorage.setItem('cinema_favorites', JSON.stringify(updated));
-      renderMovies(movies);
-    };
-    actions.appendChild(favBtn);
+    // const favBtn = document.createElement('button');
+    // favBtn.textContent = favorites.some(m => m.imdbID === movie.imdbID) ? 'Remove Favorite' : 'Add Favorite';
+    // favBtn.onclick = () => {
+    //   // Get latest favorites
+    //   let favs = [];
+    //   try { favs = JSON.parse(localStorage.getItem('cinema_favorites')) || []; } catch {}
+    //   const exists = favs.some(m => m.imdbID === movie.imdbID);
+    //   let updated;
+    //   if (exists) {
+    //     updated = favs.filter(m => m.imdbID !== movie.imdbID);
+    //   } else {
+    //     updated = [...favs, movie];
+    //   }
+    //   localStorage.setItem('cinema_favorites', JSON.stringify(updated));
+    //   renderMovies(movies);
+    // };
+    // actions.appendChild(favBtn);
 
-    // Add Watchlist button
-    const wlBtn = document.createElement('button');
-    wlBtn.textContent = watchlist.some(m => m.imdbID === movie.imdbID) ? 'Remove Watchlist' : 'Add Watchlist';
-    wlBtn.onclick = () => {
-      // Get latest watchlist
-      let wlist = [];
-      try { wlist = JSON.parse(localStorage.getItem('cinema_watchlist')) || []; } catch {}
-      const exists = wlist.some(m => m.imdbID === movie.imdbID);
-      let updated;
-      if (exists) {
-        updated = wlist.filter(m => m.imdbID !== movie.imdbID);
-      } else {
-        updated = [...wlist, movie];
-      }
-      localStorage.setItem('cinema_watchlist', JSON.stringify(updated));
-      renderMovies(movies);
-    };
-    actions.appendChild(wlBtn);
+    // // Add Watchlist button
+    // const wlBtn = document.createElement('button');
+    // wlBtn.textContent = watchlist.some(m => m.imdbID === movie.imdbID) ? 'Remove Watchlist' : 'Add Watchlist';
+    // wlBtn.onclick = () => {
+    //   // Get latest watchlist
+    //   let wlist = [];
+    //   try { wlist = JSON.parse(localStorage.getItem('cinema_watchlist')) || []; } catch {}
+    //   const exists = wlist.some(m => m.imdbID === movie.imdbID);
+    //   let updated;
+    //   if (exists) {
+    //     updated = wlist.filter(m => m.imdbID !== movie.imdbID);
+    //   } else {
+    //     updated = [...wlist, movie];
+    //   }
+    //   localStorage.setItem('cinema_watchlist', JSON.stringify(updated));
+    //   renderMovies(movies);
+    // };
+    // actions.appendChild(wlBtn);
 
-    li.appendChild(actions);
-    movieList.appendChild(li);
+    // li.appendChild(actions);
+    // movieList.appendChild(li);
   });
 }
 
@@ -107,6 +145,9 @@ export function renderMovieList(listElement, movies, emptyMessage = 'No movies f
     const info = document.createElement('span');
     info.textContent = `${movie.Title} (${movie.Year})`;
     li.appendChild(info);
+    listElement.appendChild(li);
+
+    li.appendChild(createMovieActions(movie, () => renderMovieList(listElement, movies, emptyMessage)));
     listElement.appendChild(li);
   });
 }
@@ -135,6 +176,8 @@ export function renderAllMovies(movies) {
     year.className = 'movie-card-year';
     year.textContent = movie.Year;
     card.appendChild(year);
+
+    card.appendChild(createMovieActions(movie, () => renderAllMovies(movies)));
     grid.appendChild(card);
   });
 }
