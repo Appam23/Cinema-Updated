@@ -64,7 +64,7 @@
 }
 
 section {
-  background: #393b53;
+  background: #eeeef0;
   border-radius: 8px;
   border: 2px solid #eee;
   padding: 20px;
@@ -109,7 +109,7 @@ li img{
   background: #ffd6e0;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   
   section {
     width: 70%;
@@ -123,5 +123,5 @@ li img{
   .back-link{
     margin: 0 0 40px 0;
     align-self: center;
-  }
-}
+  } 
+}*/
