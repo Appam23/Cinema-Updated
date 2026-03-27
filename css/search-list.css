@@ -64,7 +64,7 @@
 }
 
 section {
-  background: #eeeef0;
+  background: #6820a3;
   border-radius: 8px;
   border: 2px solid #eee;
   padding: 20px;
@@ -109,19 +109,4 @@ li img{
   background: #ffd6e0;
 }
 
-/* @media (max-width: 600px) {
-  
-  section {
-    width: 70%;
-    margin: 40px 20px;
-  }
 
-  .search-bar input {
-    width: 120%;
-  }
-
-  .back-link{
-    margin: 0 0 40px 0;
-    align-self: center;
-  } 
-}*/
