@@ -48,6 +48,22 @@ function setWatchlist(newWatchlist) {
 // Demo: List of available movies (replace with your own or fetch from API)
 
 const availableMovieTitles = [
+    // Documentary movies
+    "March of the Penguins",
+    "Man on Wire",
+    "The Cove",
+    "Blackfish",
+    "Free Solo",
+    "Won't You Be My Neighbor?",
+    "An Inconvenient Truth",
+    "Jiro Dreams of Sushi",
+    "Searching for Sugar Man",
+    "The Fog of War",
+    "Bowling for Columbine",
+    "Super Size Me",
+    "13th",
+    "Inside Job",
+    "Amy",
   "Inception",
   "The Matrix",
   "Interstellar",
@@ -73,29 +89,45 @@ const availableMovieTitles = [
   "Black Panther",
   "Frozen",
   "Shrek",
-  "Finding Nemo"
-    // More Horror movies
-    ,"Rosemary's Baby"
-    ,"The Babadook"
-    ,"Paranormal Activity"
-    ,"The Blair Witch Project"
-    ,"Poltergeist"
-    ,"The Texas Chain Saw Massacre"
-    ,"Carrie"
-    ,"Insidious"
-    ,"The Grudge"
-    ,"Midsommar"
-    // More Western movies
-    ,"Shane"
-    ,"Rio Bravo"
-    ,"The Searchers"
-    ,"3:10 to Yuma"
-    ,"The Outlaw Josey Wales"
-    ,"Red River"
-    ,"Winchester '73"
-    ,"The Man Who Shot Liberty Valance"
-    ,"My Darling Clementine"
-    ,"Pat Garrett & Billy the Kid"
+  "Finding Nemo",
+  // More Horror movies
+  "Rosemary's Baby",
+  "The Babadook",
+  "Paranormal Activity",
+  "The Blair Witch Project",
+  "Poltergeist",
+  "The Texas Chain Saw Massacre",
+  "Carrie",
+  "Insidious",
+  "The Grudge",
+  "Midsommar",
+  // More Western movies
+  "Shane",
+  "Rio Bravo",
+  "The Searchers",
+  "3:10 to Yuma",
+  "The Outlaw Josey Wales",
+  "Red River",
+  "Winchester '73",
+  "The Man Who Shot Liberty Valance",
+  "My Darling Clementine",
+  "Pat Garrett & Billy the Kid",
+  // War movies
+  "Saving Private Ryan",
+  "Full Metal Jacket",
+  "Apocalypse Now",
+  "Platoon",
+  "1917",
+  "Dunkirk",
+  "Hacksaw Ridge",
+  "Black Hawk Down",
+  "The Thin Red Line",
+  "Letters from Iwo Jima",
+  "Fury",
+  "Enemy at the Gates",
+  "The Bridge on the River Kwai",
+  "Inglourious Basterds",
+  "Paths of Glory"
 ];
 
 import { fetchAllMovieDetails } from "./shared.js";
