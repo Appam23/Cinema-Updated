@@ -70,7 +70,7 @@ body.modal-open > *:not(.modal) {
 }
 
 #auth-message {
-  color: #d7263d;
+  color: #df142f;
   min-height: 20px;
   margin: 0;
 }
