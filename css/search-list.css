@@ -1,5 +1,10 @@
 /* Search bar and list styles */
 
+body {
+	background: linear-gradient(135deg, #F00 0%, #FF7F00 16%, #00F 66%, #4B0082 83%, #8F00FF 100%);
+	margin: 0;
+}
+
   .centered-main {
     min-height: 80vh;
     display: flex;
